@@ -14,7 +14,7 @@ function div_f(_n1, _n2) {
 // 무한반복 시켜주세요.
 while (true) {
     let num = parseInt(prompt('1. 더하기 2. 빼기 3. 곱하기 4. 나누기 5. 종료', 0));
-
+d
     if (num < 5) {
         let _n1 = parseInt(prompt('첫 번째 숫자 입력', 0));
         let _n2 = parseInt(prompt('두 번째 숫자 입력', 0));
