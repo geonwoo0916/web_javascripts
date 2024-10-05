@@ -1,0 +1,54 @@
+body {
+    background-color: blanchedalmond;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+}
+
+.div {
+
+    background-color: white;
+    /* text-align: center; */
+    border-radius: 5px;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 120px;
+    height: 60px;
+
+    background-color: skyblue;
+    border: 1px solid 0;
+    /* text-align: center; */
+}
+
+.main {
+    background-color: darkcyan;
+
+    border: 1px solid 0;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.info {
+    height: 60px;
+    width: 200px;
+    background-color: bisque;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Eng {
+    background-color: blue;
+    
+}
+
+.rst {
+    background-color: red;
+    
+}
