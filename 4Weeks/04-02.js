@@ -23,7 +23,7 @@ const resetBtn = document.querySelector('.rst');
 
 const data = ['대한민국','서울','약 5000만명','+82'];
 
-ㅋ
+
 
 function resetInfo() {
     infos.forEach(area => {
