@@ -2,6 +2,7 @@ let todos = [];
 let id = 0;
 let isAllCompleted=false
 let currentShowType = 'all'
+let keyword = ''
 
 const todoInputElem = document.querySelector('.todo-input')
 const todoListElem = document.querySelector('.todo-list')
@@ -11,6 +12,7 @@ const showAllBtn = document.querySelector(".show-all-btn")
 const showActiveBtn = document.querySelector(".show-active-btn")
 const showCompletedBtn = document.querySelector(".show-completed-btn")
 const clearCompletedBtn = document.querySelector(".clear-completed-btn")
+const todoSearchBtn = document.querySelector(".todo-search-input")
 
 const onClickComleteAll=()=>{
     if(todos.length==0) return;
@@ -151,6 +153,7 @@ const painTodo = (todo)=>{
     todoListElem.appendChild(todoItemElem)
 }
 
+
 const clearCompletedTodos = ()=>{
     todos=todos.filter(todo=>!todo.isCompleted)
     paintTodos()
@@ -164,6 +167,10 @@ const paintTodos = ()=>{
         filteredTodos=todos.filter(todo=>!todo.isCompleted)
     }else if(currentShowType=='completed'){
         filteredTodos=todos.filter(todo=>todo.isCompleted)
+    }
+
+    if(keyword != ''){
+        filteredTodos =filteredTodos.filter(todo=>todo.content.toLowerCase().includes(keyword.toLowerCase()))
     }
 
     filteredTodos.forEach((todo)=> painTodo(todo))
@@ -190,6 +197,11 @@ const init = ()=>{
             appendTodos(e.target.value)
             todoInputElem.value=''
         }
+    })
+    todoSearchBtn.addEventListener('input',(e)=>{
+        keyword = e.target.value
+        paintTodos()
+
     })
     completeAllBtn.addEventListener('click', onClickComleteAll)
     showActiveBtn.addEventListener('click',onClickShowTodosType)

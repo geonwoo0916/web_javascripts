@@ -1,9 +1,18 @@
+*{
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 body {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     background-color: #F5F5F5;
     min-height: 100vh;
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .todo-wrapper {
@@ -22,6 +31,24 @@ body {
 .todo-box {
     background-color: white;
     border: 1px solid #ddd;
+}
+
+.todo-search-box {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    height: 3rem;
+    border-bottom: 1px solid #ddd;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.todo-search-input {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
 }
 
 .todo-input-box {
