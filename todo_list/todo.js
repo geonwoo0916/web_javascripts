@@ -1,11 +1,16 @@
 let todos = [];
 let id = 0;
 let isAllCompleted=false
+let currentShowType = 'all'
 
 const todoInputElem = document.querySelector('.todo-input')
 const todoListElem = document.querySelector('.todo-list')
 const leftITemElem = document.querySelector(".left-items")
 const completeAllBtn = document.querySelector(".complete-all-btn")
+const showAllBtn = document.querySelector(".show-all-btn")
+const showActiveBtn = document.querySelector(".show-active-btn")
+const showCompletedBtn = document.querySelector(".show-completed-btn")
+const clearCompletedBtn = document.querySelector(".clear-completed-btn")
 
 const onClickComleteAll=()=>{
     if(todos.length==0) return;
@@ -146,10 +151,37 @@ const painTodo = (todo)=>{
     todoListElem.appendChild(todoItemElem)
 }
 
+const clearCompletedTodos = ()=>{
+    todos=todos.filter(todo=>!todo.isCompleted)
+    paintTodos()
+}
+
 const paintTodos = ()=>{
     todoListElem.innerHTML=''
-    todos.forEach((todo)=> painTodo(todo))
+
+    let filteredTodos=todos;
+    if(currentShowType=='active'){
+        filteredTodos=todos.filter(todo=>!todo.isCompleted)
+    }else if(currentShowType=='completed'){
+        filteredTodos=todos.filter(todo=>todo.isCompleted)
+    }
+
+    filteredTodos.forEach((todo)=> painTodo(todo))
     setLeftItems()
+}
+
+const onClickShowTodosType = (e)=>{
+    const currentElem=e.target
+    const type=currentElem.dataset.type;
+
+    if (currentShowType === type) return;
+
+    const preBtn=document.querySelector(`.show-${currentShowType}-btn`)
+    preBtn.classList.remove('selected')
+
+    currentElem.classList.add('selected')
+    currentShowType=type;
+    paintTodos();
 }
 
 const init = ()=>{
@@ -160,6 +192,10 @@ const init = ()=>{
         }
     })
     completeAllBtn.addEventListener('click', onClickComleteAll)
+    showActiveBtn.addEventListener('click',onClickShowTodosType)
+    showAllBtn.addEventListener('click',onClickShowTodosType)
+    showCompletedBtn.addEventListener('click',onClickShowTodosType)
+    clearCompletedBtn.addEventListener('click',clearCompletedTodos)
 }
 
 init()
